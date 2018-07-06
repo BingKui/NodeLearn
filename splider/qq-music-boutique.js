@@ -3,7 +3,6 @@
 const puppeteer = require('puppeteer');
 const fs = require('fs');
 const dayjs = require('dayjs');
-const _ = require('lodash');
 
 (async () => {
     const browser = await puppeteer.launch({headless: true});
