@@ -31,3 +31,5 @@ const browser = await puppeteer.launch({headless: false});
 ```javascript
 const browser = await puppeteer.launch({executablePath: '/path/to/Chrome'});
 ```
+
+[api地址](https://github.com/GoogleChrome/puppeteer/blob/v1.5.0/docs/api.md)
