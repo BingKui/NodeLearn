@@ -1,0 +1,27 @@
+{
+  "name": "nodelearn",
+  "version": "0.0.1",
+  "description": "node.js学习相关项目、资源、源码。",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/BingKui/NodeLearn.git"
+  },
+  "keywords": [
+    "node",
+    "learn",
+    "puppeteer"
+  ],
+  "author": "康兵奎",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/BingKui/NodeLearn/issues"
+  },
+  "homepage": "https://github.com/BingKui/NodeLearn#readme",
+  "dependencies": {
+    "puppeteer": "^1.5.0"
+  }
+}
