@@ -22,7 +22,7 @@ const dayjs = require('dayjs');
     }, []);
     
     // 保存数据
-    fs.writeFile(`${__dirname}/json/QQ精品歌单(${dayjs().format('YYYY-MM-DD HH:mm:ss')}).json`, JSON.stringify(musicPlayList), 'utf-8', (err) => {
+    fs.writeFile(`${__dirname}/json/QQ精品歌单(${dayjs().format('YYYY-MM-DD')}).json`, JSON.stringify(musicPlayList), 'utf-8', (err) => {
         if (err) throw err;
     });
 
@@ -33,13 +33,19 @@ const getOnePageData = async (page, pageNumber) => {
     const url = `https://y.qq.com/portal/playlist.html#t3=${pageNumber}&`;
     // 跳转到页面
     await page.goto(url);
+    await page.setViewport({ 
+        width: 1300, 
+        height: 4227,
+    });
+    // 等待两秒，加载图片
+    await page.waitFor(2000);
     // 获取歌单
     const result = await page.evaluate(() => {
         const elements = document.querySelectorAll('#playlist_box > li');
         let res = [];
         for (let ele of elements) {
             const _n = ele.querySelector('.js_playlist');
-            let img = 'https' + ele.querySelector('.playlist__pic').getAttribute('src');
+            let img = 'https:' + ele.querySelector('.playlist__pic').getAttribute('src');
             let name = _n.getAttribute('title');
             let count = ele.querySelector('.playlist__other').innerText.split('：')[1].replace(/\s+/g, '');
             let author = ele.querySelector('.playlist__author').innerText.replace(/\s+/g, '');
