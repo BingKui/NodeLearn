@@ -1,38 +1,29 @@
-// 爬取腾讯视频中播放量超过2亿的电影，作为数据分析的数据基础
-// 数据包括：
-// 1.名字
-// 2.播放量
-// 3.主演，可以为空
-// 4.是否需要VIP
-// 5.一句话描述
-// 6.海报
-// 7.评分
-// 8.播放地址
-
+// 爬取腾讯动漫中播放量超过5000W的精品动漫
 const puppeteer = require('puppeteer');
+const dayjs = require('dayjs')
 const fs = require('fs');
 
 // 爬取地址
-const url = 'http://v.qq.com/x/list/movie?pay=-1&offset=';
+const url = 'http://v.qq.com/x/list/cartoon?sort=19&offset=';
 
 (async () => {
-    const browser = await puppeteer.launch({timeout: 300000, headless: false});
+    const browser = await puppeteer.launch({timeout: 300000, headless: true});
     const page = await browser.newPage();
     let movieList = [];
-    for (let i = 0; i < 167; i++) {
+    for (let i = 0; i < 67; i++) {
         const result = await getPageData(page, i);
         movieList = movieList.concat(result);
     }
 
     // 保存数据
-    fs.writeFile(`${__dirname}/json/腾讯视频.json`, JSON.stringify(movieList), 'utf-8', (err) => {
+    fs.writeFile(`${__dirname}/json/腾讯精品动漫(${dayjs().format('YYYY-MM-DD')}).json`, JSON.stringify(movieList), 'utf-8', (err) => {
         if (err) throw err;
     });
 
     browser.close();
 })();
 
-const getPageData = await (page, pageNumber) => {
+const getPageData = async (page, pageNumber) => {
     await page.goto(`${url}${pageNumber * 30}`);
     const result = await page.evaluate(() => {
         const listElements = document.querySelectorAll('.figures_list .list_item');
@@ -47,7 +38,7 @@ const getPageData = await (page, pageNumber) => {
             const image = 'http' + item.querySelector('a.figure img').getAttribute('src');
             const address = item.querySelector('.figure_title a').getAttribute('href');
             // 处理播放量
-            const flag = (count.indexOf('亿') > -1) && (parseInt(count.split('亿')[0]) > 2);
+            const flag = (count.indexOf('亿') > -1) || ((count.indexOf('万') > -1) && (parseInt(count.split('万')[0]) > 5000));
             if (flag) {
                 items.push({
                     name,

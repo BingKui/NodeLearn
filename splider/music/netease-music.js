@@ -23,7 +23,7 @@ const dayjs = require('dayjs');
     }, []);
     
     // 保存数据
-    fs.writeFile(`./json/netease-play-list(${dayjs().format('YYYY-MM-DD HH:mm:ss')}).json`, JSON.stringify(musicPlayList), 'utf-8', (err) => {
+    fs.writeFile(`${__dirname}/json/netease-play-list(${dayjs().format('YYYY-MM-DD HH:mm:ss')}).json`, JSON.stringify(musicPlayList), 'utf-8', (err) => {
         if (err) throw err;
     });
 

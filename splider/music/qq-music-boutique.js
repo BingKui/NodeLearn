@@ -22,7 +22,7 @@ const dayjs = require('dayjs');
     }, []);
     
     // 保存数据
-    fs.writeFile(`./json/QQ精品歌单(${dayjs().format('YYYY-MM-DD HH:mm:ss')}).json`, JSON.stringify(musicPlayList), 'utf-8', (err) => {
+    fs.writeFile(`${__dirname}/json/QQ精品歌单(${dayjs().format('YYYY-MM-DD HH:mm:ss')}).json`, JSON.stringify(musicPlayList), 'utf-8', (err) => {
         if (err) throw err;
     });
 
