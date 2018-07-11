@@ -25,6 +25,12 @@ const url = 'http://v.qq.com/x/list/cartoon?sort=19&offset=';
 
 const getPageData = async (page, pageNumber) => {
     await page.goto(`${url}${pageNumber * 30}`);
+    await page.setViewport({ 
+        width: 1300, 
+        height: 4227,
+    });
+    // 等待两秒，加载图片
+    await page.waitFor(2000);
     const result = await page.evaluate(() => {
         const listElements = document.querySelectorAll('.figures_list .list_item');
         let items = [];
