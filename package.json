@@ -22,6 +22,7 @@
   },
   "homepage": "https://github.com/BingKui/NodeLearn#readme",
   "dependencies": {
+    "canvas": "^1.6.11",
     "dayjs": "^1.7.2",
     "puppeteer": "^1.5.0"
   }
