@@ -44,7 +44,7 @@ const getPageData = async (page, pageNumber) => {
             const score = item.querySelector('.figure_score') ? item.querySelector('.figure_score').innerText.replace(/\s+/g, '') : '无评分';
             const desc = item.querySelector('.figure_info') ? item.querySelector('.figure_info').innerText : '';
             const isVip = item.querySelector('.mark_v') ? true : false;
-            const image = 'http' + item.querySelector('a.figure img').getAttribute('src');
+            const image = 'http:' + item.querySelector('a.figure img').getAttribute('src');
             const address = item.querySelector('.figure_title a').getAttribute('href');
             // 处理播放量
             const flag = (count.indexOf('亿') > -1) && (parseInt(count.split('亿')[0]) > 2);
