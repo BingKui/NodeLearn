@@ -34,6 +34,13 @@ const url = 'http://v.qq.com/x/list/movie?pay=-1&offset=';
 
 const getPageData = async (page, pageNumber) => {
     await page.goto(`${url}${pageNumber * 30}`);
+    await page.setViewport({ 
+        width: 1300, 
+        height: 3227,
+    });
+    // 等待两秒，加载图片
+    await page.waitFor(2000);
+    
     const result = await page.evaluate(() => {
         const listElements = document.querySelectorAll('.figures_list .list_item');
         let items = [];
