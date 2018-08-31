@@ -4,7 +4,12 @@
   "description": "node.js学习相关项目、资源、源码。",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "cartoon": "node ./splider/cartoon/tencent.js",
+    "video": "node ./splider/video/tencent.js",
+    "qq": "node ./splider/music/qq-music.js",
+    "qq-boutique": "node ./splider/music/qq-music-boutique.js",
+    "netease": "node ./splider/music/netease-music.js",
+    "netease-boutique": "node ./splider/music/netease-music-boutique.js"
   },
   "repository": {
     "type": "git",
