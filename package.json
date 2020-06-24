@@ -27,6 +27,7 @@
   },
   "homepage": "https://github.com/BingKui/NodeLearn#readme",
   "dependencies": {
+    "baidu-aip-sdk": "^2.4.5",
     "canvas": "^1.6.11",
     "dayjs": "^1.7.2",
     "gm": "^1.23.1",
